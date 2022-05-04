@@ -1,0 +1,17 @@
+#HeroSection{
+    background-image: url('../../../public/images/home-new-banner.webp') ;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.Hero_section_Paragraph{
+    font-size: 1.125rem;
+    color: #fff;
+    padding: 0 0 20px;
+    line-height: 27px;
+}
+.Hero_section_Heading strong{
+    color: #00fd08;
+    font-weight: 400;
+}

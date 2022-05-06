@@ -13,12 +13,11 @@ const MyProduct = () => {
     const [user] = useAuthState(auth);
     const [myProducts, setMyProducts] = useState([]);
     const navigate = useNavigate();
-    const [products,setProducts] = useAllProducts([])
     useEffect(() => {
 
         const getOrders = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/product?email=${email}`;
+            const url = `http://localhost:5000/myproduct?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setMyProducts(data);
@@ -44,9 +43,9 @@ const MyProduct = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
-                    const remaining = products.filter(product => product._id !== id);
-                    setProducts(remaining);
+                    console.log(data);
+                    const remaining = myProducts.filter(product => product._id !== id);
+                    setMyProducts(remaining);
                 })
         }
     }

@@ -12,6 +12,7 @@ const Checkout = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     let from = useLocation.state?.from?.pathname || "/";
+    
     const handlePlaceOrder = event =>{
         event.preventDefault();
         const order = {

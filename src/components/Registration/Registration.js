@@ -15,12 +15,14 @@ const Registration = () => {
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
     let errorEvent;
+
     const handleRegistration = async (event) =>{
         event.preventDefault();
         const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passRef.current.value;
         await createUserWithEmailAndPassword(email, password);
+        
         await updateProfile({ displayName:name });
             console.log('Updated profile');
             console.log(user);

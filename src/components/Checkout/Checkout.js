@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -10,23 +10,8 @@ const Checkout = () => {
     const {productId} = useParams();
     const [product] = useProductDetails(productId);
     const [user] = useAuthState(auth);
-    
-    // const [user, setUser] = useState({
-    //     name: 'Akbar The Great',
-    //     email: 'akbar@momo.taj',
-    //     address: 'Tajmohol Road Md.pur',
-    //     phone: '01711111111'
-    // });
-
-    // const handleAddressChange = event =>{
-    //     console.log(event.target.value);
-    //     const {address, ...rest} = user;
-    //     const newAddress = event.target.value;
-    //     const newUser = {address: newAddress, ...rest};
-    //     console.log(newUser);
-    //     setUser(newUser);
-    // }
-
+    const navigate = useNavigate();
+    let from = useLocation.state?.from?.pathname || "/";
     const handlePlaceOrder = event =>{
         event.preventDefault();
         const order = {
@@ -42,6 +27,8 @@ const Checkout = () => {
             if(data.insertedId){
                 toast('Your order is booked!!!');
                 event.target.reset();
+                navigate(from, { replace: true });
+
             }
         })
     }

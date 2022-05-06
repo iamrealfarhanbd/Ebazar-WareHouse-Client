@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -17,11 +18,14 @@ const Login = () => {
     if (Googleerror || error) {
         errorEvent = <p className='text-danger'>Error:{Googleerror?.message} {error?.message}</p>
     }
-    const handleSubmit = event => {
+    const handleSubmit = async  event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passRef.current.value;
         signInWithEmailAndPassword(email, password);
+        const {data} = await axios.post('http://localhost:5000/login', {email});
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
     }
     const navigateRegister = () => {
         navigate('/Registration')

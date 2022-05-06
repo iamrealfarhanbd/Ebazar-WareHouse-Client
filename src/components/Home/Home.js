@@ -1,12 +1,15 @@
 
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import Allproduct from '../Allcourse/Allproduct';
+import useAllProducts from '../../hooks/useAllProducts';
+import Allproduct from '../Allproduct/Allproduct';
+import HomeProductCard from '../Allproduct/HomeProductCard/HomeProductCard';
 
 import './Home.css';
 const Home = () => {
     const navigate =useNavigate();
+    const [products] = useAllProducts([])
     return (
         <>
             <section className="HeroSection">
@@ -21,14 +24,11 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12 ">
-                            <h2 className='text-center'>our servise</h2>
-                            <Allproduct />
-                        </div>
-                    </div>
-                </div>
+                <Container className='mx-auto my-5'>
+                <Row >
+                    {products.map(product => <HomeProductCard key={product._id} product={product} />)}
+                </Row>
+            </Container>
             </section>
         </>
     );

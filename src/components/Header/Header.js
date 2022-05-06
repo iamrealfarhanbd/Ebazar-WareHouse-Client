@@ -14,22 +14,23 @@ const Header = () => {
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
-                    <Navbar.Brand as={Link} to="/">Ebazar WareHouse</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">Ebazar</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link  to="home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/Allproduct">All product</Nav.Link>
-                            <Nav.Link as={Link} to="order">Order</Nav.Link>
+                            <Nav.Link as={Link} to="home">Home</Nav.Link>
                             <Nav.Link as={Link} to="Blog">Blog</Nav.Link>
                             <Nav.Link as={Link} to="About">About</Nav.Link>
+                            <Nav.Link as={Link} to='order' >My Order</Nav.Link>
 
                         </Nav>
                         <Nav>
                             {
                                 user ?<>
                                     <Nav.Link onClick={handleSignOut} >Sign Out</Nav.Link>
-                                    <Nav.Link as={Link} to='AddProduct' >Add Product</Nav.Link>
+                                    <Nav.Link as={Link} to="/allproduct">All Product</Nav.Link>
+                                    <Nav.Link as={Link} to='addProduct' >Add Product</Nav.Link>
+                                    <Nav.Link as={Link} to='myproduct' >My Product</Nav.Link>
                                     </>
                                     :
                                     <Nav.Link as={Link} to="Login">Login</Nav.Link>

@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Order from './components/Order/Order';
-import DetailsCourse from './components/DetailsCourse/DetailsCourse';
+import ProductDeatils from './components/ProductDeatils/ProductDeatils';
 import NotFound from './components/NotFound/NotFound';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
@@ -15,10 +15,13 @@ import RestPass from './components/Login/RestPass/RestPass';
 import About from './components/About/About';
 import AddProduct from './components/AddProduct/AddProduct';
 import Checkout from './components/Checkout/Checkout';
-import Allproduct from './components/Allcourse/Allproduct';
+import Allproduct from './components/Allproduct/Allproduct';
+import { ToastContainer } from 'react-toastify';
+import MyProduct from './components/MyProduct/MyProduct';
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,8 +31,8 @@ function App() {
         <Route path="/Blog" element={<Blog />} />
         <Route path="/About" element={<About />} />
         <Route path="/Registration" element={<Registration />} />
-        <Route path="/Allproduct" element={<Allproduct />} />
-        <Route path="/Allproduct/:productId" element={<DetailsCourse />} />
+   
+        <Route path="/Allproduct/:productId" element={<ProductDeatils />} />
         <Route path="/Order" element={
           <RequireAuth>
             <Order />
@@ -40,9 +43,19 @@ function App() {
             <Checkout></Checkout>
           </RequireAuth>
         }></Route>
-        <Route path="/AddProduct" element={
+        <Route path="/addproduct" element={
           <RequireAuth>
             <AddProduct />
+          </RequireAuth>
+        } />
+        <Route path="/allproduct" element={
+          <RequireAuth>
+            <Allproduct />
+          </RequireAuth>
+        } />
+        <Route path="/myproduct" element={
+          <RequireAuth>
+            <MyProduct />
           </RequireAuth>
         } />
         <Route path="*" element={<NotFound />} />

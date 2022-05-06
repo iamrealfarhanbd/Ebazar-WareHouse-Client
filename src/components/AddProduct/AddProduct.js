@@ -1,7 +1,15 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 const AddProduct = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit ,reset } = useForm();
+    const [user] = useAuthState(auth);
+
+    const navigate = useNavigate();
+    let from = useLocation.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         console.log(data);
@@ -16,6 +24,9 @@ const AddProduct = () => {
         .then(res=> res.json())
         .then(result =>{
             console.log(result);
+            toast('Your Product is Added!!!');
+            reset();
+            navigate(from, { replace: true });
         } )
     };
     return (
@@ -23,7 +34,7 @@ const AddProduct = () => {
             <h2>Please add a service</h2>
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
-                <input className='mb-2' placeholder='Email' type="email"{...register("email", { required: true })} />
+                <input className='mb-2' placeholder='Email' value={user.email} type="email"{...register("email", { required: true ,})} readOnly />
                 <textarea className='mb-2' placeholder='Description' {...register("description")} />
                 <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
                 <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
-const CourseCard = (props) => {
+const HomeProductCard = (props) => {
     const navigate = useNavigate();
-    const { name, description, img,_id ,price} = props.review;
+    const { name, description, img,_id ,price} = props.product;
 
     return (
         <>
@@ -31,4 +31,4 @@ const CourseCard = (props) => {
     );
 };
 
-export default CourseCard;
+export default HomeProductCard;

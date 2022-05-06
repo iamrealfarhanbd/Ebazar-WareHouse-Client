@@ -47,11 +47,11 @@ const Registration = () => {
                 <div className="row">
                     <Form className=' m-5'>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Name address</Form.Label>
+                            <Form.Label>Name </Form.Label>
                             <Form.Control ref={nameRef} type="text" placeholder="Enter email" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Email </Form.Label>
                             <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
                         </Form.Group>
 

@@ -16,8 +16,11 @@ const Checkout = () => {
         event.preventDefault();
         const order = {
             email:user.email,
-            product: product.name,
+            providername: user.displayName,
+            productname: product.productname,
             productId: productId,
+            quantity: product.quantity,
+            price: product.price,
             address: event.target.address.value,
             phone: event.target.phone.value
         }
@@ -35,13 +38,17 @@ const Checkout = () => {
 
     return (
         <div className='w-50 mx-auto'>
-            <h2>Please Order: {product.name}</h2>
+            <h2>Please Order: {product.productname}</h2>
             <form onSubmit={handlePlaceOrder}>
                 <input className='w-100 mb-2' type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled/>
                 <br />
                 <input className='w-100 mb-2' type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
                 <br />
-                <input className='w-100 mb-2' type="text" value={product.name} name="product" placeholder='product' required readOnly />
+                <input className='w-100 mb-2' type="text" value={product.productname} name="product" placeholder='product' required readOnly disabled/>
+                <br />
+                <input className='w-100 mb-2' type="number" value={product.quantity} name="quantity" placeholder='quantity' required readOnly disabled />
+                <br />
+                <input className='w-100 mb-2' type="number" value={product.price} name="quantity" placeholder='quantity' required readOnly disabled />
                 <br />
                 <input className='w-100 mb-2' type="text" name="address" placeholder='address' autoComplete='off' required />
                 <br />

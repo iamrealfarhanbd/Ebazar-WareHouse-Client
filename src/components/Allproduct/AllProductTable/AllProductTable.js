@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, Card, Col, Table } from 'react-bootstrap';
+import { Button, Card, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import useAllProducts from '../../../hooks/useAllProducts';
 
 const AllProductTable = ({product,handleClick}) => {
     const navigate = useNavigate();
-    const { name, description, img, _id, price ,email} = product;
+    const { productname,providername, description, img, _id, price ,email,quantity} = product;
+// console.log(product)
 
-console.log(handleClick)
 
     return (
         <>
@@ -16,9 +15,11 @@ console.log(handleClick)
                     <tr>
                         <th>#ID</th>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th>Product Name</th>
+                        <th>Provider Name</th>
                         <th>Email</th>
                         <th>description</th>
+                        <th>Quantity</th>
                         <th>price</th>
                         <th>Manage Product</th>
                     </tr>
@@ -27,11 +28,15 @@ console.log(handleClick)
                     <tr>
                         <td>{_id}</td>
                         <td><Card.Img variant="top" src={img} style={{width:'80px',height:'80px'}} /></td>
-                        <td>{name}</td>
+                        <td>{productname}</td>
+                        <td>{providername}</td>
                         <td>{email}</td>
                         <td>{description}</td>
+                        <td>{quantity}</td>
                         <td>{price}</td>
-                        <td><Button className='btn btn-primary' onClick={()=>handleClick(_id)}>X</Button></td>
+                        <td>
+                            <Button className='btn btn-primary' onClick={()=>navigate(`/update/${_id}`)}>Edit</Button>
+                            <Button className='btn btn-primary' onClick={()=>handleClick(_id)}>X</Button></td>
                     </tr>
                 </tbody>
             </Table>

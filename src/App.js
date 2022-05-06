@@ -18,6 +18,7 @@ import Checkout from './components/Checkout/Checkout';
 import Allproduct from './components/Allproduct/Allproduct';
 import { ToastContainer } from 'react-toastify';
 import MyProduct from './components/MyProduct/MyProduct';
+import UpdateProduct from './components/UpdateProduct/UpdateProduct';
 function App() {
   return (
     <div className="App">
@@ -46,6 +47,11 @@ function App() {
         <Route path="/addproduct" element={
           <RequireAuth>
             <AddProduct />
+          </RequireAuth>
+        } />
+        <Route path="/update/:id" element={
+          <RequireAuth>
+            <UpdateProduct />
           </RequireAuth>
         } />
         <Route path="/allproduct" element={

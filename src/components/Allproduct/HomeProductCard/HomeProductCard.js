@@ -1,27 +1,30 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import {useNavigate } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 
-const HomeProductCard = (props) => {
+const HomeProductCard = ({product}) => {
     const navigate = useNavigate();
-    const { name, description, img,_id ,price} = props.product;
-
+    const { productname, description, img ,_id ,price,providername} = product;
+console.log(product)
     return (
         <>
             <Col lg={4} md={6}>
                 <Card className='m-2' >
                     <Card.Img variant="top" src={img} />
                     <Card.Body>
-                        <Card.Title>{name}</Card.Title>
+                        <Card.Title>{productname}</Card.Title>
                         <Card.Text>
-                            {description} 
+                          <b>Provider Name : </b>  {providername} 
                         </Card.Text>
                         <Card.Text>
-                            {price} 
+                        <b>Description:</b> {description} 
+                        </Card.Text>
+                        <Card.Text>
+                        <b>Price : </b>  {price} 
                         </Card.Text>
                         <span className='d-flex justify-content-between  flex-column '>
-                        <Button variant="outline-warning mb-1" onClick={() => navigate('/order')}>Order Now</Button>
-                        <Button variant="outline-dark mt-1" onClick={() => navigate(`/Allproduct/${_id}`)}>Read More</Button>
+                        <Button variant="outline-warning mb-1" onClick={() => navigate(`/checkout/${_id}`)}>Order Now</Button>
+                        <Button variant="outline-dark mt-1" onClick={() => navigate(`/Allproduct/${_id}`)}>Details</Button>
                         </span>
                   
                     </Card.Body>

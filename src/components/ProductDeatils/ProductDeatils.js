@@ -32,7 +32,7 @@ const ProductDeatils = () => {
             <Row>
             <h2>You are about to book: {products.length}</h2>
             <Card.Img variant="top" className='mx-auto' src={product.img} style={{width:'50%',height:400}} />
-            <h2>You are about to book: {product.name}</h2>
+            <h2>You are about to book: {product.productname}</h2>
             <div className='text-center'>
                 <Link to={`/checkout/${productId}`}>
                     <Button className='btn btn-primary'>Proceed Checkout </Button>

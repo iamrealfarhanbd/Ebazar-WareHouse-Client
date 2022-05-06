@@ -25,7 +25,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
         const {data} = await axios.post('http://localhost:5000/login', {email});
         localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
+       
     }
     const navigateRegister = () => {
         navigate('/Registration')

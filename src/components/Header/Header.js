@@ -26,16 +26,19 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             {
-                                user ?<>
-                                    <Nav.Link onClick={handleSignOut} >Sign Out</Nav.Link>
-                                    <Nav.Link as={Link} to="/allproduct">All Product</Nav.Link>
-                                    <Nav.Link as={Link} to='addProduct' >Add Product</Nav.Link>
-                                    <Nav.Link as={Link} to='myproduct' >My Product</Nav.Link>
+                                user ?
+                                    <>
+                                        <Nav.Link onClick={handleSignOut} >Sign Out</Nav.Link>
+                                        <Nav.Link as={Link} to="/allproduct">All Product</Nav.Link>
+                                        <Nav.Link as={Link} to='addProduct' >Add Product</Nav.Link>
+                                        <Nav.Link as={Link} to='myproduct' >My Product</Nav.Link>
                                     </>
                                     :
-                                    <Nav.Link as={Link} to="Login">Login</Nav.Link>
+                                    <>
+                                        <Nav.Link as={Link} to="Login">Login</Nav.Link>
+                                        <Nav.Link as={Link} to="Registration">Registration</Nav.Link>
+                                    </>
                             }
-                            <Nav.Link as={Link} to="Registration">Registration</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

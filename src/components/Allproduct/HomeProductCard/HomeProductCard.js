@@ -10,7 +10,7 @@ console.log(product)
         <>
             <Col lg={4} md={6}>
                 <Card className='m-2' >
-                    <Card.Img variant="top" src={img} />
+                    <Card.Img variant="top" src={img} className="img-fluid " />
                     <Card.Body>
                         <Card.Title>{productname}</Card.Title>
                         <Card.Text>
@@ -23,7 +23,7 @@ console.log(product)
                         <b>Price : </b>  {price} 
                         </Card.Text>
                         <span className='d-flex justify-content-between  flex-column '>
-                        <Button variant="outline-warning mb-1" onClick={() => navigate(`/checkout/${_id}`)}>Order Now</Button>
+                        {/* <Button variant="outline-warning mb-1" onClick={() => navigate(`/checkout/${_id}`)}>Order Now</Button> */}
                         <Button variant="outline-dark mt-1" onClick={() => navigate(`/Allproduct/${_id}`)}>Details</Button>
                         </span>
                   

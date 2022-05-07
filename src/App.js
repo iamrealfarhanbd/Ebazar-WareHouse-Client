@@ -6,7 +6,6 @@ import { Routes, Route, } from "react-router-dom";
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import RequireAuth from './components/RequireAuth/RequireAuth';
-import Order from './components/Order/Order';
 import ProductDeatils from './components/ProductDeatils/ProductDeatils';
 import NotFound from './components/NotFound/NotFound';
 import Blog from './components/Blog/Blog';
@@ -14,7 +13,6 @@ import Footer from './components/Footer/Footer';
 import RestPass from './components/Login/RestPass/RestPass';
 import About from './components/About/About';
 import AddProduct from './components/AddProduct/AddProduct';
-import Checkout from './components/Checkout/Checkout';
 import Allproduct from './components/Allproduct/Allproduct';
 import { ToastContainer } from 'react-toastify';
 import MyProduct from './components/MyProduct/MyProduct';
@@ -34,16 +32,8 @@ function App() {
         <Route path="/Registration" element={<Registration />} />
    
         <Route path="/Allproduct/:productId" element={<ProductDeatils />} />
-        <Route path="/Order" element={
-          <RequireAuth>
-            <Order />
-          </RequireAuth>
-        } />
-          <Route path="/checkout/:productId" element={
-          <RequireAuth>
-            <Checkout></Checkout>
-          </RequireAuth>
-        }></Route>
+ 
+
         <Route path="/addproduct" element={
           <RequireAuth>
             <AddProduct />

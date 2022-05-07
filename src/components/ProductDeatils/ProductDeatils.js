@@ -1,106 +1,155 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import useAllProducts from '../../hooks/useAllProducts';
 import useProductDetails from '../../hooks/useProductDetails';
+import Loading from '../Loading/Loading';
 
 const ProductDeatils = () => {
+    const navigate = useNavigate();
     const { productId } = useParams();
     // const [product] = useProductDetails(productId);
     const [product, setProduct] = useState({});
-    const { _id , quantity } = product;
-    const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
+    const [updatedQuantity, setUpdatedQuantity] = useState(product.quantity);
 
 
 
 
-// console.log(product.quantity)
- 
 
-    const handlePlaceOrder = event =>{
+
+
+    // console.log(product.quantity)
+
+
+    const handlePlaceOrder = event => {
         event.preventDefault();
-        const qyt= parseInt(event.target.quantity.value);
+        const qyt = parseInt(event.target.quantity.value);
         console.log(qyt)
         const { quantity, ...rest } = product;
         const previousQuantity = quantity;
         const updatedProduct = { updatedQuantity: previousQuantity + qyt, ...rest };
         setUpdatedQuantity(updatedProduct);
-        
-        const url = `https://ebazzar-warehouse.herokuapp.com/${productId}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedProduct)
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to Receive ${product.productname}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Receive it!'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                const url = `http://localhost:5000/updateProduct/${productId}`;
+                fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedProduct)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+                        // toast('Your Product is Update!!!');
+                        setProduct(updatedProduct);
+                    })
+                Swal.fire(
+                    'Received!',
+                    `Your ${product.productname} has been Received.`,
+                    'success'
+                )
+            }
         })
-        .then(res=> res.json())
-        .then(result =>{
-            console.log(result);
-            // toast('Your Product is Update!!!');
-            
-        } )
+
     }
 
-    useEffect( () =>{
-        const url = `https://ebazzar-warehouse.herokuapp.com/${productId}`;
-        console.log(url);
-        fetch(url)
-        .then(res=> res.json())
-        .then(data => setProduct(data));
 
-    }, [updatedQuantity]);
     const handleDecreaseQuantity = () => {
 
         const { quantity, ...rest } = product;
         const previousQuantity = quantity;
         const updatedProduct = { updatedQuantity: previousQuantity - 1, ...rest };
         setUpdatedQuantity(updatedProduct);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to Deliver ${product.productname}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Deliver it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/updateProduct/${productId}`, {
+                    method: 'PUT',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(updatedProduct)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log('this ',data)
+                        // setUpdatedQuantity(data)
+                        setProduct(updatedProduct);
 
-        fetch(`https://ebazzar-warehouse.herokuapp.com/${productId}`, {
-            method: 'PUT',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(updatedProduct)
+                    })
+                Swal.fire(
+                    'Delivered!',
+                    `Your ${product.productname} has been Delivered.`,
+                    'success'
+                )
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log('this ',data)
-                // setUpdatedQuantity(data)
-            })
-        console.log(updatedProduct);
+
+
 
     }
+    useEffect(() => {
+        const url = `http://localhost:5000/product/${productId}`;
+        console.log(url);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setProduct(data));
+
+    }, [product]);
 
     return (
         <section className="p-5 bg-dark text-light" id="learn ">
-        <Container className='text-center '>
-            <Row>
-            <h2>You are about to book: {product.length}</h2>
-            <Card.Img variant="top" className='mx-auto' src={product.img} style={{width:'50%',height:400}} />
-            <h2>You are about to book: {product.productname}</h2>
-            <h2>product quantity: {product.quantity}</h2>
-            <h2>product NEW quantity: {product.quantity}</h2>
-            <form className='d-flex flex-column align-items-center' onSubmit={handlePlaceOrder}>
-            <input className='w-100 mb-2' type="number"  name="quantity" placeholder='quantity' />
-                <br />
-                <input className='btn btn-primary' type="submit" value="Place Order" />
-            </form>
-            <div className='text-center'>
+            <Container >
+                <Row>
+                    <Col lg={6} md={6}>
 
-                <Link to={`/checkout/${productId}`}>
-                    <Button className='btn btn-primary'>Proceed Checkout </Button>
-                </Link>
-                <Button className='btn btn-primary' onClick={handleDecreaseQuantity}>OneX</Button>
+                        <Card.Img variant="top" className='mx-auto img-fluid' src={product.img} style={{ width: '100%', height: 400 }} />
 
-            </div>
-            </Row>
-        </Container>
+                    </Col>
+                    <Col lg={6} md={6}>
+                        <h2>Product : {product.productname}</h2>
+                        <h2> Description : {product.description}</h2>
+                        <h2>Price : {product.price}</h2>
+                        <p>Provider name : {product.providername}</p>
+                        <h2>Quantity: {product.quantity}</h2>
+                        <form className=' d-flex  align-items-center' onSubmit={handlePlaceOrder}>
+                            <input className='m-2 p-2' type="number" name="quantity" placeholder='quantity' required/>
+                            <input className='btn btn-primary p-2 ' type="submit" value="increase" />
+                        </form>
+                        <div className=' '>
+                            <Button size="lg" className='btn btn-danger m-2 ' onClick={handleDecreaseQuantity}>Delivered</Button>
+                            <Button size="lg" className='m-2 ' variant="warning" onClick={() => navigate("/Allproduct")}> All product</Button>
+                            <Button size="lg" className='btn btn-primary m-2 ' onClick={() => navigate(`/update/${product._id}`)}>Edit</Button>
+                        </div>
+                    </Col>
+
+
+                </Row>
+            </Container>
         </section>
     );
-};   
+};
 
 export default ProductDeatils;

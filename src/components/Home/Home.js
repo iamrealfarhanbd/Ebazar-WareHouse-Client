@@ -17,9 +17,11 @@ const Home = () => {
                     <div className="container">
                         <div className="row justify-content-end align-items-center" >
                             <div className=" col-md-6">
-                            <h1 className="Hero_section_Heading ">The next evolution of <strong>Ebazar WareHouse?</strong></h1>
-                                <p className="Hero_section_Paragraph">DAchieve complete control of your products — and instant clarity across suppliers, production, inventory and customers.</p>
-                                <Button size="lg" variant="warning" onClick={() => navigate("/Allproduct")}> Start Your Free Trail</Button>
+                            <h1 className="Hero_section_Heading ">The All-In-One <strong>Ebazar WareHouse</strong> POS System</h1>
+                                <p className="Hero_section_Paragraph">Looking for the best <strong>Ebazar WareHouse</strong>  Bikedesk is a dedicated  <strong>Ebazar WareHouse</strong> management system that makes your life easier and grows your business by more than 10 % each year.</p>
+                                <b >Free 14 day trial. No credit card required.</b>
+                                <br />
+                                <Button className='mt-3' size="lg" variant="warning" onClick={() => navigate("/Allproduct")}> Start Your Free Trail</Button>
                             </div>
                             <div className=" col-md-6">
                                 <img src="../images/Marketing.png" alt="" className='img-fluid' />
@@ -42,35 +44,31 @@ const Home = () => {
 
             </Container>
 
-            <section className='ExtraSectionOne p-5 text-center'>
-                <h2 className='p-5'>Subscribe now for manage your stock</h2>
-                <form action="" className='d-flex flex-column align-items-center' method="post">
-                    <input type="email" className='email' name="email" placeholder='Subscribe Us'  />
-                    <input type="submit" className='submit mt-2 ' value="submit" />
-                </form>
-            </section>
-
-            <section className="ExtraSectiontwo">
-                <div className="d-flex img-bg align-items-center" id='ExtraSectiontwo'>
+            <section className="ExtraSectionOne">
+                <div className="d-flex img-bg align-items-center" id='ExtraSectionOne'>
                     <div className="container">
                         <div className="row justify-content-end align-items-center" >
-                            <div className=" col-md-6">
-                                <h1 className="Hero_section_Heading "><strong>Ebazar WareHouse</strong> that’s perfect for manufacturers, wholesalers and distributors, everywhere.
-                                 </h1>
-                                
-                            </div>
-                            <div className=" col-md-6">
+                        <div className=" col-md-6 p-5">
                                <div className="text-center">
-                               <img src="../images/inventroy.png" alt="" className='img-fluid w-100' />
-                                <Button size="lg" className='mt-5' variant="warning" onClick={() => navigate("/Allproduct")}> All product</Button>
+                              <img src="../images/worldmap.png" alt="" className='img-fluid' style={{width:550 ,height:325}}/>
+                   
                                </div>
 
                             </div>
+                            <div className=" col-md-6">
+                                <h1 className="Hero_section_Heading ">#1 for bike shops 
+                                 </h1>
+                                 <p>  All features have been co-developed with our customers to make the easiest and most efficient system, which saves you a lot of time.</p>
+                               
+                            </div>
+               
                         </div>
                     </div>
                 </div>
 
             </section>
+
+         
 
         </>
     );

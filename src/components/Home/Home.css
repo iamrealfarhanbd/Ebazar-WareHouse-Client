@@ -5,7 +5,6 @@
 .Hero_section_Paragraph{
     font-size: 1.125rem;
     color: #fff;
-    padding: 0 0 20px;
     line-height: 27px;
 }
 .Hero_section_Heading strong{
@@ -42,6 +41,10 @@
 }
 #ExtraSectiontwo{
     background-image:url('../../../public/images/blueMask.png');
+    /* background-repeat: no-repeat; */
+}
+#ExtraSectionthree{
+    background-image:url('../../../public/images/orangeMask.png');
     /* background-repeat: no-repeat; */
 }
 

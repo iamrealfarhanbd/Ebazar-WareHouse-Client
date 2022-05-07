@@ -29,7 +29,7 @@ const ProductDeatils = () => {
         const qyt = parseInt(event.target.quantity.value);
         console.log(qyt)
         const { quantity, ...rest } = product;
-        const previousQuantity = quantity;
+        const previousQuantity = parseInt(quantity);
         const updatedProduct = { updatedQuantity: previousQuantity + qyt, ...rest };
         setUpdatedQuantity(updatedProduct);
 

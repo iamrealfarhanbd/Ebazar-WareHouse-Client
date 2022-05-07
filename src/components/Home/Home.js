@@ -6,10 +6,13 @@ import useAllProducts from '../../hooks/useAllProducts';
 import Allproduct from '../Allproduct/Allproduct';
 import HomeProductCard from '../Allproduct/HomeProductCard/HomeProductCard';
 import MetaData from "../layout/MetaData";
+import Loading from '../Loading/Loading';
 import './Home.css';
 const Home = () => {
     const navigate = useNavigate();
     const [products] = useAllProducts([])
+    
+  
     return (
         <>
            <MetaData title="Ebazar -Home" />
@@ -36,7 +39,7 @@ const Home = () => {
                 <Row >
                     <h1 className="Hero_section_Heading text-center ">All  <strong>Ebazar Inventory Product</strong></h1>
 
-                    {products.slice(0, 6).map(product => <HomeProductCard key={product._id} product={product} />)}
+                    {products.length ? products.slice(0, 6).map(product => <HomeProductCard key={product._id} product={product} /> ) : <Loading /> }
 
                 </Row>
                     <div className=" text-center">
@@ -81,7 +84,7 @@ const Home = () => {
                             </div>
                             <div className=" col-md-6 p-5">
                                <div className="text-center">
-                               <iframe width="640" height="360" src="https://www.youtube.com/embed/hQww0OJjei0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                               <iframe width="640" height="360" src="https://www.youtube.com/embed/hQww0OJjei0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                    
                                </div>
 

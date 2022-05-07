@@ -8,6 +8,7 @@ import auth from '../../firebase.init';
 import useAllProducts from '../../hooks/useAllProducts';
 import AllProductTable from '../Allproduct/AllProductTable/AllProductTable';
 import MetaData from '../layout/MetaData';
+import Loading from '../Loading/Loading';
 
 
 const MyProduct = () => {
@@ -72,7 +73,8 @@ const MyProduct = () => {
                     </tr>
                 </thead>
           
-                    {myProducts.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />)}
+                    {myProducts.length ? myProducts.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />) : <Loading />}
+
                     </Table>
                 </Row>
             </Container>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Table } from 'react-bootstrap';
 import useAllProducts from '../../hooks/useAllProducts';
 import MetaData from '../layout/MetaData';
+import Loading from '../Loading/Loading';
 import AllProductTable from './AllProductTable/AllProductTable';
 
 const Allproduct = () => {
@@ -43,7 +44,7 @@ const Allproduct = () => {
                     </tr>
                 </thead>
           
-                    {products.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />)}
+                    {products.length ? products.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />) : <Loading />}
                   
             </Table>
                 </Row>

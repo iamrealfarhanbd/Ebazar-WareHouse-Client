@@ -10,7 +10,6 @@ const ProductDeatils = () => {
     const { productId } = useParams();
     // const [product] = useProductDetails(productId);
     const [product, setProduct] = useState({});
-    const { register, handleSubmit ,reset } = useForm();
     const { _id , quantity } = product;
     const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
@@ -18,25 +17,35 @@ const ProductDeatils = () => {
 
 
 // console.log(product.quantity)
-    const onSubmit = data => {
-        console.log(data);
-        const url = `http://localhost:5000/product/${productId}`;
+ 
+
+    const handlePlaceOrder = event =>{
+        event.preventDefault();
+        const qyt= parseInt(event.target.quantity.value);
+        console.log(qyt)
+        const { quantity, ...rest } = product;
+        const previousQuantity = quantity;
+        const updatedProduct = { updatedQuantity: previousQuantity + qyt, ...rest };
+        setUpdatedQuantity(updatedProduct);
+        
+        const url = `https://ebazzar-warehouse.herokuapp.com/${productId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(updatedProduct)
         })
         .then(res=> res.json())
         .then(result =>{
             console.log(result);
-            toast('Your Product is Update!!!');
-            reset();
+            // toast('Your Product is Update!!!');
+            
         } )
-    };
+    }
+
     useEffect( () =>{
-        const url = `http://localhost:5000/product/${productId}`;
+        const url = `https://ebazzar-warehouse.herokuapp.com/${productId}`;
         console.log(url);
         fetch(url)
         .then(res=> res.json())
@@ -48,9 +57,9 @@ const ProductDeatils = () => {
         const { quantity, ...rest } = product;
         const previousQuantity = quantity;
         const updatedProduct = { updatedQuantity: previousQuantity - 1, ...rest };
-        setUpdatedQuantity(previousQuantity - 1);
+        setUpdatedQuantity(updatedProduct);
 
-        fetch(`http://localhost:5000/updateProduct/${productId}`, {
+        fetch(`https://ebazzar-warehouse.herokuapp.com/${productId}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"
@@ -75,9 +84,10 @@ const ProductDeatils = () => {
             <h2>You are about to book: {product.productname}</h2>
             <h2>product quantity: {product.quantity}</h2>
             <h2>product NEW quantity: {product.quantity}</h2>
-            <form className='d-flex flex-column align-items-center' onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-2 w-25' placeholder='Quantity' defaultValue={product?.quantity} type="number" {...register("quantity")} />
-                <input className='mb-2 w-25' type="submit" value="Add Service" />
+            <form className='d-flex flex-column align-items-center' onSubmit={handlePlaceOrder}>
+            <input className='w-100 mb-2' type="number"  name="quantity" placeholder='quantity' />
+                <br />
+                <input className='btn btn-primary' type="submit" value="Place Order" />
             </form>
             <div className='text-center'>
 

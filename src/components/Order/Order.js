@@ -15,7 +15,7 @@ const Order = () => {
         
         const getOrders = async() =>{
             const email = user.email;
-            const url = `http://localhost:5000/order?email=${email}`;
+            const url = `https://ebazzar-warehouse.herokuapp.com/order?email=${email}`;
             try{
                 const {data} = await axiosPrivate.get(url);
                 setOrders(data);
@@ -35,7 +35,7 @@ const Order = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:5000/order/${id}`;
+            const url = `https://ebazzar-warehouse.herokuapp.com/order/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

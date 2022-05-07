@@ -23,7 +23,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passRef.current.value;
         signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('http://localhost:5000/login', {email});
+        const {data} = await axios.post('https://ebazzar-warehouse.herokuapp.com/login', {email});
         localStorage.setItem('accessToken', data.accessToken);
        
     }

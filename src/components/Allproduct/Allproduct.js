@@ -10,7 +10,7 @@ const Allproduct = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://ebazzar-warehouse.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

@@ -68,7 +68,51 @@ const Home = () => {
 
             </section>
 
-         
+            <section className="ExtraSectiontwo">
+                <div className="d-flex img-bg align-items-center" id='ExtraSectiontwo'>
+                    <div className="container">
+                        <div className="row justify-content-end align-items-center" >
+                            <div className=" col-md-6">
+                                <h1 className="Hero_section_Heading ">Everything you need in your <strong>Ebazar WareHouse</strong> 
+                                 </h1>
+                                 <p><strong>Ebazar WareHouse</strong>  helps you manage everything in your bikeshop, including POS and payments, customer history, products, stock and much more.</p>
+                               
+                            </div>
+                            <div className=" col-md-6 p-5">
+                               <div className="text-center">
+                               <iframe width="640" height="360" src="https://www.youtube.com/embed/hQww0OJjei0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+                               </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section className="ExtraSectionthree">
+                <div className="d-flex img-bg align-items-center" id='ExtraSectionthree'>
+                    <div className="container">
+                        <div className="row justify-content-end align-items-center" >
+                            <div className=" col-md-6">
+                                <h1 className="Hero_section_Heading ">Works on all platforms </h1>
+                                 <p><strong>Ebazar WareHouse</strong> is a cloud based system, which works on all platforms with no user limits.</p>
+                                 <p>Use it on mac, pc, iPad, mobile etc., even with multiple simultaneous users!</p>
+                               
+                            </div>
+                            <div className=" col-md-6 p-5">
+                               <div className="text-center">
+                               <img src="../images/computer-ipad-mobil.png" alt="" className='img-fluid' style={{width:550 ,height:325}}/>
+
+                   
+                               </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
 
         </>
     );

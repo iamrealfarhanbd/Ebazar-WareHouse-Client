@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Table } from 'react-bootstrap';
 import useAllProducts from '../../hooks/useAllProducts';
 import AllProductTable from './AllProductTable/AllProductTable';
 
@@ -26,7 +26,23 @@ const Allproduct = () => {
         <>
             <Container className='mx-auto my-5'>
                 <Row >
+                <Table striped bordered hover variant="dark" responsive>
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Provider Name</th>
+                        <th>Email</th>
+                        <th>Quantity</th>
+                        <th>price</th>
+                        <th>Manage Product</th>
+                    </tr>
+                </thead>
+          
                     {products.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />)}
+                  
+            </Table>
                 </Row>
             </Container>
         </>

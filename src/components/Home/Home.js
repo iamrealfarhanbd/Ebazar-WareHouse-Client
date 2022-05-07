@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import useAllProducts from '../../hooks/useAllProducts';
 import Allproduct from '../Allproduct/Allproduct';
 import HomeProductCard from '../Allproduct/HomeProductCard/HomeProductCard';
-
+import MetaData from "../layout/MetaData";
 import './Home.css';
 const Home = () => {
     const navigate = useNavigate();
     const [products] = useAllProducts([])
     return (
         <>
+           <MetaData title="Ebazar -Home" />
             <section className="HeroSection">
                 <div className="d-flex img-bg align-items-center" id='HeroSection'>
                     <div className="container">

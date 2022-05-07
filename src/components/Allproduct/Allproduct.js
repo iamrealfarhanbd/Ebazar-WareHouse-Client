@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Table } from 'react-bootstrap';
 import useAllProducts from '../../hooks/useAllProducts';
+import MetaData from '../layout/MetaData';
 import AllProductTable from './AllProductTable/AllProductTable';
 
 const Allproduct = () => {
@@ -24,6 +25,8 @@ const Allproduct = () => {
 
     return (
         <>
+           <MetaData title="Ebazar -Inventory" />
+
             <Container className='mx-auto my-5'>
                 <Row >
                 <Table striped bordered hover variant="dark" responsive>

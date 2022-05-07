@@ -1,12 +1,13 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 import useAllProducts from '../../hooks/useAllProducts';
 import AllProductTable from '../Allproduct/AllProductTable/AllProductTable';
+import MetaData from '../layout/MetaData';
 
 
 const MyProduct = () => {
@@ -52,9 +53,27 @@ const MyProduct = () => {
     console.log(myProducts)
     return (
         <>
+           <MetaData title="Ebazar - My Product" />
+
             <Container className='mx-auto my-5'>
                 <Row >
+                    <h2>My Product: {myProducts.length}</h2>
+                <Table striped bordered hover variant="dark" responsive>
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Provider Name</th>
+                        <th>Email</th>
+                        <th>Quantity</th>
+                        <th>price</th>
+                        <th>Manage Product</th>
+                    </tr>
+                </thead>
+          
                     {myProducts.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />)}
+                    </Table>
                 </Row>
             </Container>
 

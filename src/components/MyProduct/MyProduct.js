@@ -19,7 +19,7 @@ const MyProduct = () => {
 
         const getOrders = async () => {
             const email = user.email;
-            const url = `https://ebazzar-warehouse.herokuapp.com/myproduct?email=${email}`;
+            const url = `http://localhost:5000/myproduct?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setMyProducts(data);
@@ -39,7 +39,7 @@ const MyProduct = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `https://ebazzar-warehouse.herokuapp.com/product/${id}`;
+            const url = `http://localhost:5000/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -73,7 +73,7 @@ const MyProduct = () => {
                     </tr>
                 </thead>
           
-                    {myProducts.length ? myProducts.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />) : <Loading />}
+                    { myProducts.map(product => <AllProductTable key={product._id} product={product} handleClick={handleDelete} />) }
 
                     </Table>
                 </Row>

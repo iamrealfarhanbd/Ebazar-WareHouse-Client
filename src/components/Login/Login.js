@@ -4,10 +4,12 @@ import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import './Login.css'
 const Login = () => {
     const [signInWithEmailAndPassword,user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, Googleuser, Googleloading, Googleerror] = useSignInWithGoogle(auth);
+    const[token]= useToken(user||Googleuser)
     const emailRef = useRef('');
     const passRef = useRef('');
     const navigate = useNavigate();
@@ -23,8 +25,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passRef.current.value;
         signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('https://ebazzar-warehouse.herokuapp.com/login', {email});
-        localStorage.setItem('accessToken', data.accessToken);
+       
        
     }
     const navigateRegister = () => {
@@ -33,7 +34,12 @@ const Login = () => {
     const navigateresetPass = () => {
         navigate('/RestPass')
     }
-    if (user || Googleuser) {
+    // if (user || Googleuser) {
+        
+    //     navigate(from, { replace: true });
+    // }
+    if (token) {
+        
         navigate(from, { replace: true });
     }
     

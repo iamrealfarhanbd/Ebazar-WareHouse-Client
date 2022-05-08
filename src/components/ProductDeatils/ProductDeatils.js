@@ -44,7 +44,7 @@ const ProductDeatils = () => {
         }).then((result) => {
 
             if (result.isConfirmed) {
-                const url = `https://ebazzar-warehouse.herokuapp.com/updateProduct/${productId}`;
+                const url = `http://localhost:5000/updateProduct/${productId}`;
                 fetch(url, {
                     method: 'PUT',
                     headers: {
@@ -85,7 +85,7 @@ const ProductDeatils = () => {
             confirmButtonText: 'Yes, Deliver it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://ebazzar-warehouse.herokuapp.com/updateProduct/${productId}`, {
+                fetch(`http://localhost:5000/updateProduct/${productId}`, {
                     method: 'PUT',
                     headers: {
                         "content-type": "application/json"
@@ -111,7 +111,7 @@ const ProductDeatils = () => {
 
     }
     useEffect(() => {
-        const url = `https://ebazzar-warehouse.herokuapp.com/product/${productId}`;
+        const url = `http://localhost:5000/product/${productId}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())

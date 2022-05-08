@@ -14,6 +14,7 @@ const RestPass = () => {
         await sendPasswordResetEmail(email);
         toast('Sent email');
     }
+    
     return (
         <>
             <div className="container">

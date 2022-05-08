@@ -58,7 +58,7 @@ const MyProduct = () => {
 
             <Container className='mx-auto my-5'>
                 <Row >
-                    <h2>My Product: {myProducts.length}</h2>
+                    <h2>My Product: {myProducts.length ? myProducts.length : `No Product Added yet..!`}</h2>
                 <Table striped bordered hover variant="dark" responsive>
                 <thead>
                     <tr>

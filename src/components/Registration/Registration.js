@@ -3,10 +3,12 @@ import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 const Registration = () => {
     const [createUserWithEmailAndPassword,user, loading,errorEmailAndPassword] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [updateProfile, updating, errorUpdateProfile] = useUpdateProfile(auth);
     const [signInWithGoogle, Googleuser, Googleloading, Googleerror] = useSignInWithGoogle(auth);
+    const [token]=useToken(Googleuser || user)
     const nameRef = useRef('');
     const emailRef = useRef('');
     const passRef = useRef('');
@@ -39,6 +41,10 @@ const Registration = () => {
         console.log(user);
     }
     if (Googleuser || user) {
+        navigate(from, { replace: true });
+    }
+    if (token) {
+        
         navigate(from, { replace: true });
     }
     return (

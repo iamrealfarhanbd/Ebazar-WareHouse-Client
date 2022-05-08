@@ -40,9 +40,6 @@ const Registration = () => {
         navigate('/');
         console.log(user);
     }
-    if (Googleuser || user) {
-        navigate(from, { replace: true });
-    }
     if (token) {
         
         navigate(from, { replace: true });

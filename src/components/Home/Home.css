@@ -8,8 +8,12 @@
     line-height: 27px;
 }
 .Hero_section_Heading strong{
-    color: #00fd08;
-    font-weight: 400;
+    color: #05c26a;
+    font-weight: 600;
+}
+#ExtraSectiontwo .Hero_section_Heading strong{
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .ExtraSectionOne{

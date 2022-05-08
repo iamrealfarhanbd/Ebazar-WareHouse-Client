@@ -40,7 +40,7 @@ const Home = () => {
             </section>
             <Container className='mx-auto my-5 center'>
                 <Row >
-                    <h1 className="Hero_section_Heading text-center ">All  <strong>Ebazar Inventory Product</strong></h1>
+                    <h1 className="Hero_section_Heading text-center ">All  <strong>Ebazar Products</strong></h1>
 
                     {products.length ? products.slice(0, 6).map(product => <HomeProductCard key={product._id} product={product} />) : <Loading />}
 

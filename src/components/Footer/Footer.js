@@ -8,7 +8,7 @@ const Footer = () => {
             <footer className="bg-dark text-light text-center text-md-left p-5">
                 <Container className="footer">
                     <Row className="footerRow">
-                        <h4>Important Links</h4>
+                        <h4>Footer Links</h4>
                         <Navbar bg="dark" variant="dark" expand="lg">
 
                             <Nav className="mx-auto ">

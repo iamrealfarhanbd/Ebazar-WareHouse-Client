@@ -4,7 +4,7 @@ import {useNavigate, useParams } from 'react-router-dom';
 
 const HomeProductCard = ({product}) => {
     const navigate = useNavigate();
-    const { productname, description, img ,_id ,price,providername} = product;
+    const { productname, description, img ,_id ,price,providername,quantity} = product;
     return (
         <>
             <Col lg={4} md={6}>
@@ -17,6 +17,9 @@ const HomeProductCard = ({product}) => {
                         </Card.Text>
                         <Card.Text>
                         <b>Description:</b> {description} 
+                        </Card.Text>
+                        <Card.Text>
+                        <b>Quantity:</b> {quantity} 
                         </Card.Text>
                         <Card.Text>
                         <b>Price : </b>  {price} 

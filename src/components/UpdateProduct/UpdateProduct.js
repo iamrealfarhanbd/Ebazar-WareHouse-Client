@@ -18,12 +18,12 @@ const UpdateProduct = () => {
         .then(res => res.json())
         .then(data => {
             setProducts(data) 
-            console.log(data)
+            // console.log(data)
         });
     }, []);
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         const url = `https://ebazzar-warehouse.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
@@ -34,7 +34,7 @@ const UpdateProduct = () => {
         })
         .then(res=> res.json())
         .then(result =>{
-            console.log(result);
+            // console.log(result);
             toast('Your Product is Update!!!');
             reset();
             navigate(from, { replace: true });

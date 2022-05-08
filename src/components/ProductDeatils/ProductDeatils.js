@@ -27,7 +27,7 @@ const ProductDeatils = () => {
     const handlePlaceOrder = event => {
         event.preventDefault();
         const qyt = parseInt(event.target.quantity.value);
-        console.log(qyt)
+        // console.log(qyt)
         const { quantity, ...rest } = product;
         const previousQuantity = parseInt(quantity);
         const updatedProduct = { updatedQuantity: previousQuantity + qyt, ...rest };
@@ -54,7 +54,7 @@ const ProductDeatils = () => {
                 })
                     .then(res => res.json())
                     .then(result => {
-                        console.log(result);
+                        // console.log(result);
                         // toast('Your Product is Update!!!');
                         setProduct(updatedProduct);
                     })
@@ -112,7 +112,7 @@ const ProductDeatils = () => {
     }
     useEffect(() => {
         const url = `https://ebazzar-warehouse.herokuapp.com/product/${productId}`;
-        console.log(url);
+        // console.log(url);
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));

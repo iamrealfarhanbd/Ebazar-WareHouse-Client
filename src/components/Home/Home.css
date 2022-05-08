@@ -2,7 +2,6 @@
     background: #212529;
     color: #fff;
 }
-
 .Hero_section_Paragraph{
     font-size: 1.125rem;
     color: #fff;
@@ -12,7 +11,7 @@
     color: #05c26a;
     font-weight: 600;
 }
-#ExtraSectiontwo .Hero_section_Heading  {
+#ExtraSectiontwo .Hero_section_Heading {
     color: #ffffff;
     font-weight: 600;
 }
@@ -47,7 +46,6 @@
 #ExtraSectiontwo{
     background-image:url('../../../public/images/blueMask.png');
     /* background-repeat: no-repeat; */
-    color: #ffffff;
 }
 #ExtraSectionthree{
     background-image:url('../../../public/images/orangeMask.png');

@@ -13,9 +13,10 @@ const Footer = () => {
 
                             <Nav className="mx-auto ">
                                 <Nav.Link as={Link} to="home">Home</Nav.Link>
-                                <Nav.Link as={Link} to="/Allproduct">Allproduct</Nav.Link>
+                                <Nav.Link as={Link} to="/Allproduct">All product</Nav.Link>
                                 <Nav.Link as={Link} to="Blog">Blog</Nav.Link>
                                 <Nav.Link as={Link} to="About">About</Nav.Link>
+                                <Nav.Link as={Link} to="myproduct">My product</Nav.Link>
                             </Nav>
 
                         </Navbar>

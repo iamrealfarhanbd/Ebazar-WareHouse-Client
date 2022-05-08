@@ -7,7 +7,7 @@ const Blog = () => {
         <>
             <MetaData title="Ebazar - Blog" />
 
-            <Container className='p-5'>
+            <Container className='py-5'>
                 <h2 className='text-center p-3 '> My Blog Section</h2>
                 <Row>
                     <Col xs={12} md={6} className="mt-5">

@@ -19,7 +19,8 @@ const AllProductTable = ({product,handleClick}) => {
                         <td>{email}</td>
                         <td>{quantity}</td>
                         <td>{price}</td>
-                        <td>
+                        <td >
+                            <Button variant="success mx-2" onClick={() => navigate(`/Allproduct/${_id}`)}>Details</Button>
                             <Button className='btn btn-primary mx-2' onClick={()=>navigate(`/update/${_id}`)}>Edit</Button>
                             <Button className='btn btn-danger mx-2' onClick={()=>handleClick(_id)}><BsFillTrashFill /> </Button></td>
                     </tr>

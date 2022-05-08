@@ -46,7 +46,7 @@ const Home = () => {
 
                 </Row>
                 <div className=" text-center">
-                    <Button size="lg" className='mt-5' variant="warning" onClick={() => navigate("/Allproduct")}> All product</Button>
+                    <Button size="lg" className='mt-5' variant="warning" onClick={() => navigate("/Allproduct")}> Manage Inventories</Button>
                 </div>
 
             </Container>

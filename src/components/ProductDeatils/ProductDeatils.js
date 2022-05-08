@@ -140,7 +140,7 @@ const ProductDeatils = () => {
                         </form>
                         <div className=' '>
                             <Button size="lg" className='btn btn-danger m-2 ' onClick={handleDecreaseQuantity}>Delivered</Button>
-                            <Button size="lg" className='m-2 ' variant="warning" onClick={() => navigate("/Allproduct")}> All product</Button>
+                            <Button size="lg" className='m-2 ' variant="warning" onClick={() => navigate("/Allproduct")}> Manage Inventories</Button>
                             <Button size="lg" className='btn btn-primary m-2 ' onClick={() => navigate(`/update/${product._id}`)}>Edit</Button>
                         </div>
                     </Col>

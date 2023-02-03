@@ -8,7 +8,7 @@ const useToken = (user) => {
             // console.log(user)
             const email = user?.user?.email;
             if (email) {
-                const { data } = await axios.post('https://ebazar-warehouse-server.onrender.com/login', { email });
+                const { data } = await axios.post('http://localhost:4000/login', { email });
                 setToken(data.accessToken)
                 localStorage.setItem('accessToken', data.accessToken);
             }

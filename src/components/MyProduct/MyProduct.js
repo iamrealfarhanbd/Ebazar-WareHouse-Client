@@ -19,7 +19,7 @@ const MyProduct = () => {
 
         const getOrders = async () => {
             const email = user.email;
-            const url = `https://ebazar-warehouse-server.onrender.com/myproduct?email=${email}`;
+            const url = `http://localhost:4000/myproduct?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setMyProducts(data);
@@ -39,7 +39,7 @@ const MyProduct = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `https://ebazar-warehouse-server.onrender.com/product/${id}`;
+            const url = `http://localhost:4000/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

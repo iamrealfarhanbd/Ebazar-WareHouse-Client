@@ -4,13 +4,28 @@ const useProductDetails = productId =>{
     const [product, setProduct] = useState({});
 
     useEffect( () =>{
-        const url = `http://localhost:4000/product/${productId}`;
-        console.log(url);
-        fetch(url)
-        .then(res=> res.json())
-        .then(data => setProduct(data));
+        fetchData();
 
     }, [productId]);
+    const fetchData = async () => {
+        try {
+          const res = await fetch(`https://ebazar-warehouse-server.onrender.com/product/${productId}`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          const result = await res.json();
+          if (!result.error) {
+            setProduct(result);
+         
+          } else {
+            console.log(result);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
     return [product]
 }
 

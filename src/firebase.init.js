@@ -7,14 +7,15 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:process.env.REACT_APP_apiKey,
-  authDomain:process.env.REACT_APP_authDomain,
-  projectId:process.env.REACT_APP_projectId,
-  storageBucket:process.env.REACT_APP_storageBucket,
-  messagingSenderId:process.env.REACT_APP_messagingSenderId,
-  appId:process.env.REACT_APP_appId,
-  measurementId:process.env.REACT_APP_measurementId,
-};
+  apiKey: "AIzaSyCdGh_tqaTgrH1_-I6LrNDoOegv0t2akzk",
+  authDomain: "ebazar-b8516.firebaseapp.com",
+  databaseURL: "https://ebazar-b8516-default-rtdb.firebaseio.com",
+  projectId: "ebazar-b8516",
+  storageBucket: "ebazar-b8516.appspot.com",
+  messagingSenderId: "347353986132",
+  appId: "1:347353986132:web:7340503052732ccf0ea9c1",
+  measurementId: "G-SGJ9CWL90Y"
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

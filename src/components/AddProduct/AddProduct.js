@@ -14,7 +14,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `https://ebazzar-warehouse.herokuapp.com/product`;
+        const url = `https://ebazar-warehouse-server.onrender.com/product`;
         fetch(url, {
             method: 'POST',
             headers: {

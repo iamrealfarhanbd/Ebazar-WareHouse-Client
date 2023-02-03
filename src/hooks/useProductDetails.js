@@ -4,7 +4,7 @@ const useProductDetails = productId =>{
     const [product, setProduct] = useState({});
 
     useEffect( () =>{
-        const url = `https://ebazzar-warehouse.herokuapp.com/product/${productId}`;
+        const url = `https://ebazar-warehouse-server.onrender.com/product/${productId}`;
         console.log(url);
         fetch(url)
         .then(res=> res.json())

@@ -13,7 +13,7 @@ const UpdateProduct = () => {
     const [products,setProducts] = useState([])
 
     useEffect( () =>{
-        const url = `http://localhost:4000/product/${id}`;
+        const url = `https://ebazar-warehouse-server.onrender.com/product/${id}`;
         fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -24,7 +24,7 @@ const UpdateProduct = () => {
 
     const onSubmit = data => {
         // console.log(data);
-        const url = `http://localhost:4000/product/${id}`;
+        const url = `https://ebazar-warehouse-server.onrender.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

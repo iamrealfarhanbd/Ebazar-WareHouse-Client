@@ -11,7 +11,7 @@ const Allproduct = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:4000/product/${id}`;
+            const url = `https://ebazar-warehouse-server.onrender.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
